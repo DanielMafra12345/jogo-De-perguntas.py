@@ -36,7 +36,7 @@ else:
     print("A Resposta Está Errada!")
 
 tom=input("Qual é o nome do ator do Homen Aranha?")
-if tom == "Tom Holland" or tom == "Tobey Maguairi" or tom == "Endrew Garfield":
+if tom == "Tom Holland" or tom == "Tobey Maguairi" or tom == "Andrew Garfield":
     print("Correto!")
     pontos+=1
 else:
