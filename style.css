@@ -1,1 +1,112 @@
+/* ======== CONFIGURAÇÕES GERAIS ======== */
+body {
+    margin: 0;
+    padding: 20px;
+    background: #050505;                   /* escuro profundo */
+    color: #e0e0e0;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
 
+/* Centralização opcional (deixe ou remova) */
+body > * {
+    max-width: 500px;
+    margin: auto;
+}
+
+
+/* ======== TÍTULO ======== */
+h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #ffffff;
+
+    /* leve brilho */
+    text-shadow: 0 0 8px #00ccffaa;
+}
+
+
+
+/* ======== INPUT (GLASSMORPHISM) ======== */
+input {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(8px);
+
+    border: 2px solid #222;
+    border-radius: 10px;
+
+    color: #e6e6e6;
+
+    margin-bottom: 14px;
+
+    transition: 0.3s;
+}
+
+/* foco com neon */
+input:focus {
+    border-color: #00ccff;
+    box-shadow: 0 0 8px #00ccffaa;
+    background: rgba(255,255,255,0.1);
+    outline: none;
+}
+
+
+
+/* ======== BOTÃO NEON ======== */
+button {
+    padding: 12px 20px;
+    width: 100%;
+    font-size: 17px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #00aaff, #0066ff);
+    color: #fff;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 12px #0099ff88;
+
+    transition: 0.25s;
+}
+
+/* hover neon */
+button:hover {
+    background: linear-gradient(135deg, #00cfff, #0077ff);
+    box-shadow: 0 0 18px #00cfffaa;
+    transform: scale(1.03);
+}
+
+
+
+/* ======== ÁREA DE RESPOSTA ======== */
+#saida {
+    margin-top: 18px;
+    padding: 14px;
+
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(8px);
+
+    border-left: 4px solid #00ccff;
+    border-radius: 8px;
+
+    font-weight: bold;
+    color: #e6e6e6;
+
+    box-shadow: 0 0 10px #00ccff55;
+
+    animation: fadeIn 0.5s ease;
+}
+
+
+
+/* ======== ANIMAÇÃO SUAVE ======== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

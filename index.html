@@ -18,7 +18,207 @@
     <p>Boa Sorte!</p>
     <h1>Perguntas</h1> 
     
+<style>
+    body {
+        background: #111;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    h1, h2 {
+        color: #4da3ff;
+    }
+
+    input {
+        padding: 8px;
+        border-radius: 6px;
+        border: none;
+        margin-top: 6px;
+        width: 220px;
+    }
+
+    button {
+        padding: 8px 12px;
+        margin-left: 4px;
+        cursor: pointer;
+        border: none;
+        border-radius: 6px;
+        background: #4da3ff;
+        color: #000;
+        font-weight: bold;
+    }
+
+    #final {
+        margin-top: 30px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #00ff84;
+    }
+</style>
+
+
+<h1>Jogo de Perguntas</h1>
+
+
+<!-- PERGUNTA 1 -->
+<h2>1. Qual é seu nome?</h2>
+<form onsubmit="responderNome(); return false;">
+    <input id="nome_q1" placeholder="Digite seu nome">
+    <button>Enviar</button>
+</form>
+<p id="saida_nome_q1"></p>
+
+
+<!-- PERGUNTA 2 -->
+<h2>2. Qual é sua idade?</h2>
+<form onsubmit="responderIdade(); return false;">
+    <input id="idade_q2" type="number" placeholder="Digite sua idade">
+    <button>Enviar</button>
+</form>
+<p id="saida_idade_q2"></p>
+
+
+<!-- PERGUNTA 3 -->
+<h2>3. Qual é a capital do Brasil?</h2>
+<form onsubmit="responderCapital(); return false;">
+    <input id="capital_q3" placeholder="Digite a capital">
+    <button>Enviar</button>
+</form>
+<p id="saida_capital_q3"></p>
+
+
+<!-- PERGUNTA 4 -->
+<h2>4. Você é maior de idade?</h2>
+<form onsubmit="responderMaior(); return false;">
+    <input id="maior_q4" type="number" placeholder="Digite sua idade">
+    <button>Enviar</button>
+</form>
+<p id="saida_maior_q4"></p>
+
+
+<!-- PERGUNTA 5 -->
+<h2>5. Qual é o valor de pi?</h2>
+<form onsubmit="responderPi(); return false;">
+    <input id="pi_q5" placeholder="Ex: 3.14">
+    <button>Enviar</button>
+</form>
+<p id="saida_pi_q5"></p>
+
+
+<!-- PERGUNTA 6 -->
+<h2>6. Qual é o ator do Homem-Aranha?</h2>
+<form onsubmit="responderAtor(); return false;">
+    <input id="ator_q6" placeholder="Digite o nome do ator">
+    <button>Enviar</button>
+</form>
+<p id="saida_ator_q6"></p>
+
+
+<!-- PERGUNTA 7 -->
+<h2>7. Quem é o fundador da Ferrari?</h2>
+<form onsubmit="responderEnzo(); return false;">
+    <input id="enzo_q7" placeholder="Digite o nome">
+    <button>Enviar</button>
+</form>
+<p id="saida_enzo_q7"></p>
+
+
+<p id="final"></p>
+
+
+<script>
+let pontos = 0;
+let nomeUsuario = "";
+
+function norm(t) {
+    return t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+}
+
+/* P1 */
+function responderNome() {
+    let nome = document.getElementById("nome_q1").value.trim();
+    let saida = document.getElementById("saida_nome_q1");
+
+    if (!nome) { saida.innerText = "Digite seu nome."; return; }
+
+    nomeUsuario = nome;
+    pontos++;
+    saida.innerText = "Seu nome é " + nome + ".";
+}
+
+/* P2 */
+function responderIdade() {
+    let idade = document.getElementById("idade_q2").value.trim();
+    let saida = document.getElementById("saida_idade_q2");
+
+    if (!idade) { saida.innerText = "Digite sua idade."; return; }
+
+    pontos++;
+    saida.innerText = "Você tem " + idade + " anos.";
+}
+
+/* P3 */
+function responderCapital() {
+    let r = norm(document.getElementById("capital_q3").value);
+    let saida = document.getElementById("saida_capital_q3");
+
+    if (!r) { saida.innerText = "Digite uma resposta."; return; }
+
+    if (r === "brasilia") { pontos++; saida.innerText = "Correto!"; }
+    else { saida.innerText = "A resposta está errada!"; }
+}
+
+/* P4 */
+function responderMaior() {
+    let idade = Number(document.getElementById("maior_q4").value);
+    let saida = document.getElementById("saida_maior_q4");
+
+    if (!idade) { saida.innerText = "Digite sua idade."; return; }
+
+    if (idade >= 18) { pontos++; saida.innerText = "Você é maior de idade."; }
+    else { saida.innerText = "Você não é maior de idade."; }
+}
+
+/* P5 */
+function responderPi() {
+    let r = document.getElementById("pi_q5").value.replace(",", ".").trim();
+    let saida = document.getElementById("saida_pi_q5");
+
+    if (!r) { saida.innerText = "Digite um valor."; return; }
+
+    if (r === "3.14") { pontos++; saida.innerText = "Correto!"; }
+    else { saida.innerText = "A resposta está errada!"; }
+}
+
+/* P6 */
+function responderAtor() {
+    let r = norm(document.getElementById("ator_q6").value);
+    let saida = document.getElementById("saida_ator_q6");
+
+    if (!r) { saida.innerText = "Digite um nome."; return; }
+
+    const certos = ["tom holland", "tobey maguire", "andrew garfield"];
+
+    if (certos.includes(r)) { pontos++; saida.innerText = "Correto!"; }
+    else { saida.innerText = "A resposta está errada!"; }
+}
+
+/* P7 - final */
+function responderEnzo() {
+    let r = norm(document.getElementById("enzo_q7").value);
+    let saida = document.getElementById("saida_enzo_q7");
+
+    if (!r) { saida.innerText = "Digite um nome."; return; }
+
+    if (r === "enzo ferrari") { pontos++; saida.innerText = "Correto!"; }
+    else { saida.innerText = "A resposta está errada!"; }
+
+    document.getElementById("final").innerText =
+        "Fim de jogo, " + nomeUsuario + "! Você fez " + pontos + " pontos.";
+}
+</script>
+
 
 </body>
-
 </html>
